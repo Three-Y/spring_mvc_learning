@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!--
+    DispatcherServlet中央调度器
+        初始化的时候会调用init方法，加载springmvc的配置，创建springmvc的上下文，创建servlet对象
+        DispatcherServlet负责接受用户的请求，然后根据请求url，将请求分发给对应的controller进行处理
+    -->
+    <servlet>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <!--
+                默认会从类路径加载名为xxxx-servlet.xml的文件作为springmvc的配置文件，如果没有则报错
+                指定contextConfigLocation的参数，指定springmvc配置文件的具体位置
+            -->
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-mvc.xml</param-value>
+        </init-param>
+        <!--
+        load-on-startup：
+            表示tomcat启动自动创建该servlet
+            该标签的值可以控制servlet加载的顺序，大于等于0的整数，数值越小，越早加载
+        -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+    <!--
+    servlet-mapping
+        url-pattern有多种表示方法
+            使用扩展名xxxx.xx  如：some.do  *.do  *.action
+            使用斜杠"/"
+    -->
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>
