@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MyController {
@@ -71,11 +73,19 @@ public class MyController {
     /*
     返回一个对象
         使用框架将要返回的对象自动转换成json，然后用HttpServletResponse响应ajax请求
-        1.添加注解驱动，框架会自动多生成几个HttpMessageConverter的实现类，其中就有MappingJackson2HttpMessageConverter
+        1.加入jackson的依赖
+        2.添加注解驱动，框架会自动多生成几个HttpMessageConverter的实现类，其中就有MappingJackson2HttpMessageConverter
             关于HttpMessageConverter：
                 判断传进去的数据能否转换成指定的格式（如pdf，xml，img等）
                 将数据转换成需要的格式
-        2.在处理器添加@ResponseBody，表示会将返回的对象转换成json数据并用HttpServletResponse返回
+        3.在处理器添加@ResponseBody，表示会将返回的对象转换成json数据并用HttpServletResponse返回
+    框架整个流程
+        调用每个HttpMessageConverter实现类的canWriter()找到能处理处理器返回值类型的实现类
+        此处会找到MappingJackson2HttpMessageConverter
+        调用MappingJackson2HttpMessageConverter的write()，将User对象转换成json数据
+            底层调用的就是ObjectMapper
+            ContentType:application/json;charset=utf-8
+        调用@ResponseBody，将转换后的数据输出到客户端，响应ajax请求
      */
     @ResponseBody
     @RequestMapping("/some3.do")
@@ -86,4 +96,38 @@ public class MyController {
         return user;
     }
 
+    /*
+    返回一个List集合
+     */
+    @ResponseBody
+    @RequestMapping("/some4.do")
+    public List<User> doList(){
+        ArrayList<User> list = new ArrayList<User>();
+        User user1 = new User();
+        user1.setName("lalal");
+        user1.setAge(10);
+        list.add(user1);
+        User user2 = new User();
+        user2.setName("哈哈哈");
+        user2.setAge(20);
+        list.add(user2);
+        return list;
+    }
+
+    /*
+    返回一个字符串String，是数据String，而非视图
+    如何区分返回的是String还是视图？
+        有@ResponseBody的是String，否则是视图
+    注意，接收响应的ajax请求的dataType:"json"去掉，或者改成"text"，否则客户端会按照json的格式去解析字符串，解析会失败
+
+    中文可能会出现乱码问题，因为默认使用了Content-Type: text/plain;charset=ISO-8859-1
+    解决：使用@RequestMapping的producess属性，修改编码
+
+    框架的处理过程与返回User的方法处理过程相同，只是这次使用的是HttpMessageConverter的另一个实现类StringHttpMessageConverter
+     */
+    @ResponseBody
+    @RequestMapping(value = "/some5.do",produces = "text/plain;charset=utf-8")
+    public String doString(){
+        return "我只是一串string";
+    }
 }

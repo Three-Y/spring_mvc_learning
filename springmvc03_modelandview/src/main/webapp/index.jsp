@@ -9,15 +9,23 @@
                 //alert("click");
                 $.ajax({
                     //url:"some2.do",
-                    url:"some3.do",
+                    // url:"some3.do",
+                    //url:"some4.do",
+                    url:"some5.do",
                     data:{
                         name:"ibbie",
                         age:"18"
                     },
                     type:"post",
-                    dataType:"json",
+                    //dataType:"json",
                     success:function (response) {
-                        alert(response.name+"   "+response.age);
+                        //alert(response.name+"   "+response.age);
+
+                        // $.each(response,function (i,n) {
+                        //     alert(n.name+"   "+n.age)
+                        // })
+
+                        alert(response);
                     }
                 })
             })

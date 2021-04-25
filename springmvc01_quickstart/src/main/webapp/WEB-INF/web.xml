@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0">
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
 
     <!--
     DispatcherServlet中央调度器
@@ -34,6 +33,11 @@
         url-pattern有多种表示方法
             使用扩展名xxxx.xx  如：some.do  *.do  *.action
             使用斜杠"/"
+    关于url-pattern使用斜杠"/"的问题
+        tomcat服务器本身有配置一个default的servlet，它会处理没有对应的servlet-mapping的url的请求
+        tomcat本身有处理静态资源访问的能力，假如项目中有servlet使用了斜杠"/"作为url-pattern，
+        则与tomcat的default servlet冲突，tomcat就不再处理静态资源的访问，
+        假如有静态资源的请求，而项目没有相应处理，就会访问失败(有两个解决办法，见spring-mvc的配置)
     -->
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
