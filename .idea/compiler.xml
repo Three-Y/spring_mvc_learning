@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="springmvc02_param" />
         <module name="springmvc01_quickstart" />
+        <module name="springmvc03_modelandview" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
