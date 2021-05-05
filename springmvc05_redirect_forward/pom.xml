@@ -5,12 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>spring_mvc_learning</artifactId>
     <groupId>yan.ibbie</groupId>
+    <artifactId>spring_mvc_learning</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>springmvc02_param</artifactId>
+  <artifactId>springmvc05_redirect_forward</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
 </project>

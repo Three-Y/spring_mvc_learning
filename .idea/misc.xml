@@ -3,13 +3,17 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/springmvc01_quickstart" />
-    <file type="web" url="file://$PROJECT_DIR$/springmvc02_param" />
-    <file type="web" url="file://$PROJECT_DIR$/springmvc03_modelandview" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc02_request_param" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc03_response" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc04_path" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc05_redirect_forward" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc06_exception" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc04_path/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

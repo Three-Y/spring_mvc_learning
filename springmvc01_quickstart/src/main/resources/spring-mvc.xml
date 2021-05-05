@@ -41,14 +41,17 @@
 
     <!--第二种静态资源的解决方法（推荐）-->
     <!--
-        使用mvc:resources标签
+        1.使用mvc:resources标签
             mapping：处理什么请求
             location：要从哪个路径下寻找需要的静态文件
-
+        2.配置注解驱动，避免mvc:resources与@RequestMapping的冲突
         优点：不依赖于tomcat服务器
     -->
-    <mvc:resources mapping="/js/**" location="/js/"/>
-    <mvc:resources mapping="/imgs/**" location="/imgs/"/>
-    <mvc:resources mapping="/html/**" location="/html/"/>
+    <mvc:annotation-driven/>
+    <!--建议把各类静态资源文件夹都放到同一个目录下，只配置一个mvc:resources即可-->
+    <mvc:resources mapping="/static/**" location="/static/"></mvc:resources>
+    <!--<mvc:resources mapping="/js/**" location="/js/"/>-->
+    <!--<mvc:resources mapping="/imgs/**" location="/imgs/"/>-->
+    <!--<mvc:resources mapping="/html/**" location="/html/"/>-->
 
 </beans>

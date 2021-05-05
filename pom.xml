@@ -10,8 +10,11 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>springmvc01_quickstart</module>
-        <module>springmvc02_param</module>
-        <module>springmvc03_modelandview</module>
+        <module>springmvc02_request_param</module>
+        <module>springmvc03_response</module>
+        <module>springmvc04_path</module>
+        <module>springmvc05_redirect_forward</module>
+        <module>springmvc06_exception</module>
     </modules>
 
     <dependencies>
