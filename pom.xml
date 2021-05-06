@@ -15,6 +15,7 @@
         <module>springmvc04_path</module>
         <module>springmvc05_redirect_forward</module>
         <module>springmvc06_exception</module>
+        <module>springmvc07_interceptor</module>
     </modules>
 
     <dependencies>

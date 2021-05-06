@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springmvc05_redirect_forward" />
         <module name="springmvc04_path" />
+        <module name="springmvc07_interceptor" />
         <module name="springmvc06_exception" />
         <module name="springmvc01_quickstart" />
         <module name="springmvc03_response" />
